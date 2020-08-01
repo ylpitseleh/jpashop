@@ -5,7 +5,9 @@ import jpabook.jpashop.domain.item.Item;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+모든 연관관계는 LAZY로! - 즉시 로딩이면 연관된 데이터 다 끌고옴. 난리남.
+ */
 @Entity
 @Getter @Setter
 public class Category {
