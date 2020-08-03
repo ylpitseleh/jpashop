@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
     # show_sql: true   System.out에 하이버네이트 실행 SQL을 남긴다
