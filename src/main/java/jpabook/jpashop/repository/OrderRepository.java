@@ -88,5 +88,12 @@ public class OrderRepository {
         return query.getResultList();
     }
 
-
+    // 페치 조인
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery( // Order 가져올 때 Member까지 한 방에 가져오기.
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class)
+                .getResultList();
+    }
 }

@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 DTO 다른 클래스로 분리하지 않는 이유
 = 해당 컨트롤러만 사용하면 이너클래스로 만들고,
 해당 컨트롤러와 외에 다른 컨트롤러도 공용으로 사용하면 패키지와 클래스를 따로 만들거나 하는 고민을 한다.
+
+이너 클래스는 이너 클래스를 포함하는 클래스 안에서만 한정적으로 접근할 때만 사용한다.
+만약 여러 클래스에서 접근해야 하면 외부 클래스로 사용하는 것이 맞다.
+이너 클래스의 이점은 해당 클래스 안에서만 한정적으로 사용한다는 의미를 부여할 수 있고, 덕분에 개발자 입장에서 신경써야 하는 외부 클래스들이 줄어드는 효과가 있다.
  */
 // @RestController = @Controller + @ResponseBody
 // ResponseBody = 데이터 자체를 바로 xml이나 json으로 보내자.
@@ -131,6 +135,7 @@ public class MemberApiController {
     /**
      * 조회 V2: 응답 값으로 엔티티가 아닌 별도의 DTO를 반환한다.
      */
+    // api 만들 때는 절대 엔티티를 노출하거나 받지 마라. 중간에 api 스펙에 맞는 dto를 만들어라 무조건!
     @GetMapping("/api/v2/members")
     public Result membersV2() {
         List<Member> findMembers = memberService.findMembers();
